@@ -5,7 +5,7 @@ Build:
 
 Run:
 ```sh
-:~$ ./target/debug/hello-world
+:~$ ./target/debug/hello_world
 ```
 
 Build AND run:
