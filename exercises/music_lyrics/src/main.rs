@@ -21,14 +21,14 @@ fn main() {
             if gift_pos == 0 {
                 println!("And {}", gifts[gift_pos]);
             } else {
-                println!("{}{}", gifts[gift_pos], define_apender(day_pos));
+                println!("{}{}", gifts[gift_pos], define_appender(day_pos));
             }
         }
         println!();
     }
 }
 
-fn define_apender(day_pos: usize) -> String {
+fn define_appender(day_pos: usize) -> String {
     if day_pos > 0 {
         return String::from(",")
     }
