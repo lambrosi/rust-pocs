@@ -26,3 +26,15 @@ fn build_active_user(name: String, age: u16) -> User {
         active: true
     }
 }
+
+// ===== Struct Update Syntax =====
+// The syntax .. specifies that the remaining fields not explicitly set 
+// should have the same value as the fields in the given instance
+fn struct_update_syntax() {
+    let user1 = build_active_user(String::from("Nome"), 30);
+
+    let user2 = User {
+        age: 29,
+        ..user1
+    };
+}
