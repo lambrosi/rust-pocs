@@ -26,4 +26,18 @@ fn main() {
         None => println!("Third element not found!")
     }
 
+    // ========================================
+
+    // Iterate over immutable items
+    for i in &v3 {
+        println!("Value: {}", i);
+    }
+
+    // Iterate over mutable items
+    // * is te dereference operator
+    let mut v4 = vec![40, 70, 15];
+    for value in &mut v4 {
+        *value += 50;
+    }
+
 }
