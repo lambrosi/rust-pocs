@@ -1,7 +1,9 @@
+const MIN_SIZE: usize = 5;
+
 pub fn validate(s: &str) -> Result<String, (String, String)> {
     let value = String::from(s);
 
-    if value.len() < 5 {
+    if value.len() < MIN_SIZE {
         return Err(build_error_tuple(value));
     }
 
