@@ -1,3 +1,5 @@
+use std::fmt::{Display, Debug};
+
 pub trait Summary {
     fn summarize(&self) -> String;
 }
@@ -30,4 +32,30 @@ impl Summary for Tweet {
 
 fn main() {
     println!("Hello, world!");
+}
+
+fn notify(item: impl Summary) {
+    println!("Breaking news: {}", item.summarize());
+}
+
+
+// Trait bound syntax
+pub fn notify2<T: Summary>(item: T) { /* function here */ }
+
+// Multiple trait bounds with '+'
+fn function1<T: Summary + Display>(item: T) { /* function here */ }
+
+// Multiple trait bounds with 'where'
+fn function2<T, U>(x: T, y: U)
+    where T: Display + Clone,
+          U: Clone + Debug { /* function here */ }
+
+// Returning types that implement traits
+fn ret() -> impl Summary {
+    Tweet {
+        username: "sdf".to_string(),
+        content: "sdf".to_string(),
+        reply: false,
+        retweet: true
+    }
 }
