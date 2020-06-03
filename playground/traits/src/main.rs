@@ -31,8 +31,17 @@ impl Summary for Tweet {
 }
 
 fn main() {
-    println!("Hello, world!");
+    let article = NewsArticle {
+        headline: String::from("Test News"),
+        location: String::from("Porto Alegre - RS"),
+        author: String::from("Lucas"),
+        content: String::from("[...]")
+    };
+
+    println!("New article: {}", article.summarize());
 }
+
+// Another examples:
 
 fn notify(item: impl Summary) {
     println!("Breaking news: {}", item.summarize());
