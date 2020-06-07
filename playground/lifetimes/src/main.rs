@@ -1,5 +1,7 @@
 use std::env;
 
+const MINIMUM_PARAMETERS: usize = 2;
+
 fn main() {
 
     let args: Vec<String> = get_args();
@@ -24,7 +26,7 @@ fn longest<'a>(text: &'a str, another: &'a str) -> &'a str {
 
 fn get_args() -> Vec<String> {
     let args: Vec<String> = env::args().collect();
-    if args.len() < 2 {
+    if (args.len() - 1) < MINIMUM_PARAMETERS {
         panic!("Two args must be informed.");
     }
     args
