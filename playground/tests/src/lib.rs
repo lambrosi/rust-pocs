@@ -37,3 +37,24 @@ mod tests {
         validate("invalid");
     }
 }
+
+// To ignore a specific test, use:
+// #[ignore]
+
+// To run only ignored tests, use:
+// 'cargo test -- --ignored'
+
+// Running 'cargo test --help' displays the options you can use with 'cargo test'
+// Running 'cargo test -- --help' displays the options you can use after the separator '--'
+
+// Tests, by default, run in parallel
+// To run 1:1, use this command:
+// 'cargo test -- --test-threads=1'
+
+// Run one specific
+// Example: run only tem 'sum_test' in this file
+// 'cargo test sum_test'
+
+// Filter to run multiple tests
+// Example: run all tests with 'validate' in the name
+// 'cargo test validate'
