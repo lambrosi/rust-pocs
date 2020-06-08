@@ -11,7 +11,7 @@ fn validate(text: &str) -> &str {
 
 #[cfg(test)]
 mod tests {
-    use crate::{sum, validate};
+    use super::*;
 
     #[test]
     fn sum_test() {
@@ -22,5 +22,18 @@ mod tests {
     fn validate_valid_text_test() {
         let text = "Current year is 2020";
         assert_eq!(validate(text), text);
+    }
+
+    #[test]
+    #[should_panic]
+    fn validate_invalid_text_test() {
+        validate("invalid");
+    }
+
+    // Should panic with validation on panic message
+    #[test]
+    #[should_panic(expected = "Invalid text:")]
+    fn validate_invalid_text_test2() {
+        validate("invalid");
     }
 }
