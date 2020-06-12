@@ -6,6 +6,9 @@ fn main() {
         expensive_calculation(number)
     };
 
+    // Or without {}, because this are a simple expression
+    let exp = |num| expensive_calculation(num);
+
     println!("Result: {}", expensive_closure(15));
 }
 
