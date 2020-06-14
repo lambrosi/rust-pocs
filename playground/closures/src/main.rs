@@ -1,10 +1,13 @@
 use std::thread;
 use std::time::Duration;
+use std::collections::HashMap;
 
 fn main() {
     let value = 10;
 
     print_result(value, true);
+    println!();
+    print_result(3, false);
 }
 
 fn print_result(intensity: u32, standard: bool) {
@@ -14,11 +17,12 @@ fn print_result(intensity: u32, standard: bool) {
     //     n * 4
     // };
 
-    let mut expensive_closure = Cacher::new(|num| expensive_calculation(num));
+    let expensive_closure = Cacher::new(|num| expensive_calculation(num));
 
     if intensity > 5 {
-        println!("First opt: {}", expensive_closure.value(intensity));
-        println!("Second opt: {}", expensive_closure.value(intensity));
+        let result = expensive_closure.value(intensity);
+        println!("First opt: {}", result);
+        println!("Second opt: {}", result);
     } else {
         if standard {
             println!("Standard...");
@@ -39,7 +43,7 @@ struct Cacher<T>
         T: Fn(u32) -> u32
 {
     calculation: T,
-    value: Option<u32>,
+    values: HashMap<u32, u32>,
 }
 
 impl<T> Cacher<T>
@@ -49,17 +53,18 @@ impl<T> Cacher<T>
     fn new(calculation: T) -> Cacher<T> {
         Cacher {
             calculation,
-            value: None,
+            values: HashMap::new(),
         }
     }
 
-    fn value(&mut self, arg: u32) -> u32 {
-        match self.value {
-            Some(v) => v,
+    fn value(mut self, arg: u32) -> u32 {
+        match self.values.get(&arg) {
+            Some(v) => *v,
             None => {
                 let v = (self.calculation)(arg);
-                self.value = Some(v);
-                v
+                println!("{}", v);
+                self.values.insert(arg, v);
+                *self.values.get(&arg).unwrap()
             }
         }
     }
