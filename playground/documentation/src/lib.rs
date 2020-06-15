@@ -1,6 +1,6 @@
-//! # My Crate
+//! # Documentation
 //!
-//! `my_crate` is a collection of utilities to make performing certain
+//! `documentation` is a collection of utilities to make performing certain
 //! calculations more convenient.
 
 /// Adds one to the given number
